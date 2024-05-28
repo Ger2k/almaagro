@@ -1,0 +1,18 @@
+/* globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+select {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 12px;
+  border: #61A89F;
+}
+select option{
+  margin: 12px;
+}
+select option:nth-child(odd) {
+  background-color: #B8F2EB;
+}
