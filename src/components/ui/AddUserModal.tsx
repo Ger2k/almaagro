@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { AddUserButton } from '@/components/ui/AddUserButton';
 
 interface AddUserModalProps {
   newUser: { first_name: string; last_name: string; email: string; role: string };
