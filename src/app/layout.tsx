@@ -45,9 +45,11 @@ export default function RootLayout({
               <Link
                 key={link.name}
                 href={link.href}
-                className={`border-l-4 flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm  font-medium hover:text-[#cdfff9] hover:bg-[#33615b] md:flex-none md:justify-start md:p-2 md:px-3
-                ${pathname === link.href ? 'border-[#8aded3] bg-[#eefaf8] text-[#a5e4db]' : 'bg-transparent text-[#171725]'}`}
-                >
+                className={`border-l-4 flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium md:flex-none md:justify-start md:p-2 md:px-3
+                  ${pathname === link.href ? 'border-[#83DCD1] text-[#000000]' : 'bg-transparent text-[#171725]'}
+                  ${pathname === link.href ? 'bg-[linear-gradient(to_right,_rgba(131,_220,_209,_0.15)_80%,_rgba(255,_255,_255,_0.15)_20%)]' : ''}
+                  hover:text-[#131b1a] hover:bg-[linear-gradient(to_right,_rgba(89,_141,_134,_0.15)_80%,_rgba(255,_255,_255,_0.15)_20%)]`}
+              >
                 <img
                   src={link.icon}
                   alt={`${link.name} icon`}

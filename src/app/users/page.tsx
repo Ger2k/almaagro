@@ -1,5 +1,6 @@
 "use client";
 
+import { Montserrat, Work_Sans } from "next/font/google";
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +19,7 @@ import ConfirmDeleteModal from '@/components/ui/ConfirmDeleteModal';
 import { useToast } from "@/components/ui/use-toast";
 import { DataTable } from '../data/data-table';
 
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 interface User {
   id: number;
@@ -26,7 +28,6 @@ interface User {
   email: string;
   avatar: string;
 }
-
 
 const Users = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -119,6 +120,7 @@ const Users = () => {
         });
     }
   };
+
   const closeModal = () => {
     setSelectedUser(null);
     setIsAddUserModalOpen(false);
@@ -129,10 +131,12 @@ const Users = () => {
   return (
     <div className="container md:mt-0 mt-16 mx-auto p-4 m-auto">
       <h1 className="text-2xl font-bold mb-4">Usuarios</h1>
+      
       <Button 
         onClick={() => setIsAddUserModalOpen(true)}
         variant="default">Añadir Usuario
       </Button>
+      
       <Table>
         <TableHeader>
           <TableRow>
@@ -150,12 +154,14 @@ const Users = () => {
                 <Button 
                   onClick={() => setSelectedUser(user)}
                   variant="default"
+                  className='pr-4'
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                  <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
-                </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                    <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
+                  </svg>
+                  <span className='pl-2'>Ver detalles</span>
                 </Button>
                 <Button 
                 onClick={() => {
@@ -165,14 +171,15 @@ const Users = () => {
                 variant="default"
                 className="ml-2"
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                  <path d="M4 7l16 0" />
-                  <path d="M10 11l0 6" />
-                  <path d="M14 11l0 6" />
-                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M4 7l16 0" />
+                    <path d="M10 11l0 6" />
+                    <path d="M14 11l0 6" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                  </svg>
+                  <span className='pl-2'>Eliminar</span>
                 </Button>
               </TableCell>
             </TableRow>
@@ -184,8 +191,8 @@ const Users = () => {
         <UserDetailModal user={selectedUser} onClose={closeModal} />
       )}
 
-      {isAddUserModalOpen && (
-        <AddUserModal 
+      <AddUserModal 
+        isOpen={isAddUserModalOpen}
         newUser={newUser}
         setNewUser={setNewUser}
         formErrors={formErrors}
@@ -193,7 +200,7 @@ const Users = () => {
         onSubmit={handleAddUser}
         onClose={closeModal}
       />
-      )}
+      
       {isConfirmDeleteModalOpen && (
         <ConfirmDeleteModal 
           onConfirm={handleDeleteUser}
