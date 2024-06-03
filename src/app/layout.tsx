@@ -8,18 +8,7 @@ import Nav from '@/components/Nav'
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 const workSans = Work_Sans({ subsets: ["latin"] });
-const links = [
-  { 
-    name: 'Dashboard', 
-    href: '/dashboard',
-    icon: '/icons/home.svg' 
-  },
-  {
-    name: 'Usuarios',
-    href: '/users',
-    icon: '/icons/users.svg' 
-  },
-];
+
 
 export default async function RootLayout({
   children

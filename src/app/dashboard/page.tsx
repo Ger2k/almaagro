@@ -26,7 +26,7 @@ const Dashboard = () => {
   
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 m-auto">
-      <h1 className="text-2xl font-bold">{t('title')}!</h1>
+      <h1 className="text-2xl font-bold">{t('title')}</h1>
       <p className="mt-4 text-lg">
         {dateTime.toLocaleString()}
       </p>
