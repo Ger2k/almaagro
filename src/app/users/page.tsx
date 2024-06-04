@@ -12,10 +12,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import UserDetailModal from '@/components/ui/UserDetailModal';
-import AddUserModal from '@/components/ui/AddUserModal';
+import UserDetailModal from '@/components/UserDetailModal';
+import AddUserModal from '@/components/AddUserModal';
 import Image from 'next/image';
-import ConfirmDeleteModal from '@/components/ui/ConfirmDeleteModal';
+import ConfirmDeleteModal from '@/components/ConfirmDeleteModal';
 import { useToast } from "@/components/ui/use-toast";
 import { DataTable } from '../data/data-table';
 
