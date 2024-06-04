@@ -12,7 +12,7 @@
 }
 select option{
   margin: 12px;
-}*/
+}
 select option:nth-child(odd) {
   background-color: #B8F2EB;
-}
+}*/
