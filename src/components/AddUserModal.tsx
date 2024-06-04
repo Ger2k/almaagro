@@ -60,13 +60,12 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, newUser, setNewUser
     setFormErrors(errors);
   };
 
-  return (
-    <div className="grid grid-cols-2 gap-2">    
+  return (   
       <Sheet key="right">
         <SheetTrigger asChild>
           <Button variant="default">Añadir usuario</Button>
         </SheetTrigger>
-        <SheetContent side="right">
+        <SheetContent side="right" className="w-[500px] sm:w-[450px]">
           <SheetHeader>
             <SheetTitle>Añadir usuario</SheetTitle>
             <SheetDescription>
@@ -79,7 +78,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, newUser, setNewUser
                 Nombre
               </Label>
               <Input id="name" onChange={e => setNewUser({ ...newUser, first_name: e.target.value })} value={newUser.first_name} className="col-span-3" />
-              {formErrors.first_name && <p className="text-red-500 italic w-[440px] pl-4 text-right text-sm">{formErrors.first_name}</p>}
+              {formErrors.first_name && <p className="text-red-500 italic w-[405px] pl-4 text-right text-sm">{formErrors.first_name}</p>}
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
@@ -92,7 +91,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, newUser, setNewUser
                 Email
               </Label>
               <Input id="email" value={newUser.email} className="col-span-3" onChange={e => setNewUser({ ...newUser, email: e.target.value })} />
-              {formErrors.email && <p className="text-red-500 italic w-[365px] pl-4 text-right text-sm">{formErrors.email}</p>}
+              {formErrors.email && <p className="text-red-500 italic w-[330px] pl-4 text-right text-sm">{formErrors.email}</p>}
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Select>   
@@ -113,14 +112,13 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, newUser, setNewUser
           </div>
           <SheetFooter>
             <SheetClose asChild>
-              <Button onClick={onSubmit} variant="default">
+              <Button onClick={onSubmit} variant="default" className="mt-4">
                 Añadir Usuario
               </Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>
-      </Sheet>    
-    </div>
+      </Sheet>
   )
 }
     
