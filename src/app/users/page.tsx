@@ -142,10 +142,7 @@ const Users = () => {
     <div className="container md:mt-0 mt-16 mx-auto p-4 m-auto">
       <h1 className="text-2xl font-bold mb-4">Usuarios</h1>
       
-      <Button 
-        onClick={() => setIsAddUserModalOpen(true)}
-        variant="default">Añadir Usuario
-      </Button>
+      
       
       <Table>
         <TableHeader>
