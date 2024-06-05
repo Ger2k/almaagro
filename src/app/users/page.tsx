@@ -20,10 +20,9 @@ import {
 } from "@/components/ui/tooltip"
 import UserDetailModal from '@/components/UserDetailModal';
 import AddUserModal from '@/components/AddUserModal';
-import Image from 'next/image';
 import ConfirmDeleteModal from '@/components/ConfirmDeleteModal';
 import { useToast } from "@/components/ui/use-toast";
-import { DataTable } from '../data/data-table';
+import { useRouter } from 'next/navigation';
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -43,7 +42,8 @@ const Users = () => {
   const [formErrors, setFormErrors] = useState({ first_name: '', email: '' });
   const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState<User | null>(null);
-  const { toast } = useToast()
+  const { toast } = useToast();
+  const router = useRouter();
 
   useEffect(() => {
     fetch('https://reqres.in/api/users')
@@ -80,7 +80,7 @@ const Users = () => {
 
     toast({
       title: "Usuario añadido correctamente",
-    })
+    });
   
     fetch('https://reqres.in/api/users', {
       method: 'POST',
@@ -119,7 +119,7 @@ const Users = () => {
           setUserToDelete(null);
           toast({
             title: "Usuario eliminado correctamente",
-          })
+          });
         })
         .catch(error => {
           console.error('Error deleting user:', error);
@@ -132,6 +132,10 @@ const Users = () => {
     setIsAddUserModalOpen(false);
     setIsConfirmDeleteModalOpen(false);
     setUserToDelete(null);
+  };
+
+  const handleRowClick = (id: number) => {
+    router.push(`/users/${id}`);
   };
 
   return (
@@ -153,7 +157,11 @@ const Users = () => {
         </TableHeader>
         <TableBody>
           {users.map(user => (
-            <TableRow key={user.id}>
+            <TableRow 
+              key={user.id}
+              onClick={() => handleRowClick(user.id)}
+              className="cursor-pointer"
+            >
               <TableCell>{`${user.first_name} ${user.last_name}`}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>
@@ -161,7 +169,10 @@ const Users = () => {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button 
-                        onClick={() => setSelectedUser(user)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedUser(user);
+                        }}
                         variant="default"
                         className='pr-4'
                       >
@@ -182,7 +193,8 @@ const Users = () => {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button 
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setUserToDelete(user);
                         setIsConfirmDeleteModalOpen(true);
                       }} 

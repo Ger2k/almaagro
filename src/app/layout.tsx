@@ -22,10 +22,10 @@ export default async function RootLayout({
       <body className={workSans.className}>
         <NextIntlClientProvider messages={messages}>
           <Nav />
-        <main className="md:ml-64 ml-0 p-4">
-          {children}
-        </main>
-        <Toaster />
+          <main className="md:ml-64 ml-0 p-4">
+            {children}
+          </main>
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>

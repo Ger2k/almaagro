@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer"
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -102,9 +92,9 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ isOpen, newUser, setNewUser
                   <SelectValue placeholder="Seleccina un rol"/>
                 </SelectTrigger>
                 <SelectContent className="bg-white">
-                    <SelectItem value="Frontend">Frontend</SelectItem>
+                    <SelectItem className="bg-[#B8F2EB] focus:bg-[#B8F2EB]" value="Frontend">Frontend</SelectItem>
                     <SelectItem value="Backend">Backend</SelectItem>
-                    <SelectItem value="DevOps">DevOps</SelectItem>
+                    <SelectItem className="bg-[#B8F2EB] focus:bg-[#B8F2EB]" value="DevOps">DevOps</SelectItem>
                     <SelectItem value="Design">Design</SelectItem>
                 </SelectContent>        
               </Select>
